@@ -61,7 +61,7 @@
 	                <webAppConfig>
 	                    <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
 	                </webAppConfig>
-                    <jvmArgs>-Dlog4j.configurationFile=/etc/cas/log4j2.xml -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n</jvmArgs>
+                    <jvmArgs>-Dlog4j.configurationFile=${basedir}/etc/cas/log4j2.xml -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n</jvmArgs>
                 </configuration>
             </plugin>
         </plugins>
@@ -76,6 +76,19 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
+		
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-support-jdbc</artifactId>
+			<version>${cas.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.driver.version}</version>
+			<scope>runtime</scope>
+		</dependency>
     </dependencies>
 
     <properties>
@@ -84,6 +97,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mysql.driver.version>5.1.30</mysql.driver.version>
     </properties>
 
     <repositories>
