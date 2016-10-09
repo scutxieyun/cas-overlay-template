@@ -26,29 +26,54 @@
         <ref bean="rememberMeAuthenticationMetaDataPopulator" />
     </util:list>
 
-    <bean id="attributeRepository" class="org.jasig.services.persondir.support.NamedStubPersonAttributeDao"
-          p:backingMap-ref="attrRepoBackingMap" />
+    <!--<bean id="attributeRepository" class="org.jasig.services.persondir.support.NamedStubPersonAttributeDao"
+          p:backingMap-ref="attrRepoBackingMap" />-->
 
     <!--<alias name="acceptUsersAuthenticationHandler" alias="primaryAuthenticationHandler" />-->
-    <alias name="personDirectoryPrincipalResolver" alias="primaryPrincipalResolver" />
+    <!--<alias name="personDirectoryPrincipalResolver" alias="primaryPrincipalResolver" />-->
 
-    <util:map id="attrRepoBackingMap">
-        <entry key="uid" value="uid" />
-        <entry key="eduPersonAffiliation" value="eduPersonAffiliation" />
-        <entry key="groupMembership" value="groupMembership" />
-        <entry>
-            <key><value>memberOf</value></key>
-            <list>
-                <value>faculty</value>
-                <value>staff</value>
-                <value>org</value>
-            </list>
-        </entry>
-    </util:map>
-
-    <alias name="serviceThemeResolver" alias="themeResolver" />
+	<!--<bean id="primaryAuthenticationHandler" class="org.jasig.cas.adaptors.generic.AcceptUsersAuthenticationHandler">
+		<property name="users">
+			<util:map>
+				<entry key="xie" value="123456"/>
+			</util:map>
+		</property>
+	</bean>-->
+	
+	<bean id="primaryPrincipalResolver" class="org.jasig.cas.authentication.principal.PersonDirectoryPrincipalResolver">
+		<property name="attributeRepository" ref="attributeRepository"/>
+	</bean>
+	
+	<bean id="attributeRepository" class="org.jasig.services.persondir.support.jdbc.MultiRowJdbcPersonAttributeDao">
+		<constructor-arg index="0" ref="searchModeSearchDatabaseDataSource"/>
+		<constructor-arg index="1" value="select * from t_user_attrs where {0}"/>
+		<property name="queryAttributeMapping">
+			<map>
+				<entry key="username" value="username" />
+			</map>
+		</property>
+		<property name="nameValueColumnMappings">
+			<map>
+				<entry key="key" value="value" />
+			</map>
+		</property>
+		<property name="resultAttributeMapping">
+		<map>
+			<entry key="username" value="username" />
+			<entry key="dep" value="dep" />
+			<entry key="role" value="role" />
+		</map>
+		</property>
+	</bean>	
+	<alias name="serviceThemeResolver" alias="themeResolver" />
 
     <alias name="jsonServiceRegistryDao" alias="serviceRegistryDao" />
+	<!--
+	<bean id="serviceRegistryDao" class="org.jasig.cas.services.JsonServiceRegistryDao">
+		<constructor-arg>
+			<value>"etc\\cas\\services"</value>
+		</constructor-arg>	
+	</bean>-->
 
     <alias name="defaultTicketRegistry" alias="ticketRegistry" />
     
@@ -69,6 +94,11 @@
         <ref bean="memoryMonitor" />
         <ref bean="sessionMonitor" />
     </util:list>
+	
+	<bean id="myPasswordEncoder"
+  class="org.jasig.cas.authentication.handler.PlainTextPasswordEncoder"/>
+  
+  
 
     <alias name="defaultPrincipalFactory" alias="principalFactory" />
     <alias name="defaultAuthenticationTransactionManager" alias="authenticationTransactionManager" />

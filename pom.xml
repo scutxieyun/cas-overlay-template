@@ -83,12 +83,27 @@
 			<version>${cas.version}</version>
 		</dependency>
 		
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.driver.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		
     </dependencies>
 
     <properties>
@@ -98,6 +113,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mysql.driver.version>5.1.30</mysql.driver.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
     </properties>
 
     <repositories>

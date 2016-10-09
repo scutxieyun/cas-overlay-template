@@ -1,0 +1,21 @@
+{
+  "@class" : "org.jasig.cas.services.RegexRegisteredService",
+  "serviceId" : "^(http)://.*",
+  "name" : "HTTPS and IMAPS",
+  "id" : 10000004,
+  "description" : "This service definition authorized all application urls that support HTTPS and IMAPS protocols.",
+  "evaluationOrder" : 10000,
+  "usernameAttributeProvider" : {
+    "@class" : "org.jasig.cas.services.DefaultRegisteredServiceUsernameProvider"
+  },
+  "logoutType" : "BACK_CHANNEL",
+  "attributeReleasePolicy" : {
+    "@class" : "org.jasig.cas.services.ReturnAllAttributeReleasePolicy"
+  },
+  "accessStrategy" : {
+    "@class" : "org.jasig.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true,
+	"requireAllAttributes":true
+  }
+}
