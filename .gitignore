@@ -13,3 +13,4 @@ bin/
 *.iml
 *.log
 etc/cas/nerp-bk.json
+etc/cas.properties.backup
