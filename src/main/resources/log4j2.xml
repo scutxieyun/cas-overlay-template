@@ -43,7 +43,7 @@
         <AsyncLogger name="org.springframework.web" level="warn" />
         <Logger name="org.pac4j" level="warn" />
 
-        <AsyncLogger name="perfStatsLogger" level="info" additivity="false" includeLocation="true">
+        <AsyncLogger name="perfStatsLogger" level="debug" additivity="false" includeLocation="true">
             <AppenderRef ref="perfFileAppender"/>
         </AsyncLogger>
 

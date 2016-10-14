@@ -19,6 +19,7 @@
     <util:map id="authenticationHandlersResolvers">
         <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
         <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
+		<entry key-ref="secondaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
     </util:map>
 
     <util:list id="authenticationMetadataPopulators">
@@ -32,13 +33,13 @@
     <!--<alias name="acceptUsersAuthenticationHandler" alias="primaryAuthenticationHandler" />-->
     <!--<alias name="personDirectoryPrincipalResolver" alias="primaryPrincipalResolver" />-->
 
-	<!--<bean id="primaryAuthenticationHandler" class="org.jasig.cas.adaptors.generic.AcceptUsersAuthenticationHandler">
+	<bean id="secondaryAuthenticationHandler" class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
 		<property name="users">
 			<util:map>
-				<entry key="xie" value="123456"/>
+				<entry key="xie" value="561000"/>
 			</util:map>
 		</property>
-	</bean>-->
+	</bean>
 	
 	<bean id="primaryPrincipalResolver" class="org.jasig.cas.authentication.principal.PersonDirectoryPrincipalResolver">
 		<property name="attributeRepository" ref="attributeRepository"/>

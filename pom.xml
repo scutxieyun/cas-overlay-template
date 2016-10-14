@@ -57,6 +57,7 @@
                     <webApp>
                         <contextPath>/cas</contextPath>
                         <overrideDescriptor>${basedir}/etc/jetty/web.xml</overrideDescriptor>
+						
                     </webApp>
 	                <webAppConfig>
 	                    <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
