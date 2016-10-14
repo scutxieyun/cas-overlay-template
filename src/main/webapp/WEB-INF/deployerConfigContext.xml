@@ -106,17 +106,15 @@
     <alias name="tgcCipherExecutor" alias="defaultCookieCipherExecutor" />
 	
 	
-	<bean id="primaryAuthenticationHandler" class="org.jasig.cas.adaptors.jdbc.SearchModeSearchDatabaseAuthenticationHandler">
+	<bean id="primaryAuthenticationHandler" class="com.pagoda.nerp.security.SErpBasedAuthenticationHandler">
 		<property name="DataSource" ref="searchModeSearchDatabaseDataSource"/>
 	</bean>
 	
-	<bean id="logoutAction" class="org.jasig.cas.web.flow.LogoutAction"
-		p:servicesManager-ref="servicesManager"
-		p:followServiceRedirects="${cas.logout.followServiceRedirects:true}"/>
 	
-	<!--<alias name="searchModeSearchDatabaseAuthenticationHandler" alias="primaryAuthenticationHandler"/>
-	<alias name="searchModeSearchDatabaseDataSource" alias="dataSource"/>-->
 	
+	
+	<!-- <alias name="serpBaseAuthenticationHandler" alias="primaryAuthenticationHandler"/>
+	<alias name="searchModeSearchDatabaseDataSource" alias="dataSource"/> -->
 	<bean id="searchModeSearchDatabaseDataSource"
 	class="com.mchange.v2.c3p0.ComboPooledDataSource"
   p:driverClass="${database.driverClass}"

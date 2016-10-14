@@ -36,7 +36,7 @@
     <Loggers>
         <AsyncLogger  name="org.jasig" level="debug" additivity="false" includeLocation="true">
             <AppenderRef ref="console"/>
-            <!--<AppenderRef ref="file"/>-->
+            <AppenderRef ref="file"/>
         </AsyncLogger>
         <AsyncLogger  name="org.springframework" level="warn" />
         <AsyncLogger name="org.springframework.webflow" level="warn" />
@@ -47,12 +47,12 @@
             <AppenderRef ref="perfFileAppender"/>
         </AsyncLogger>
 
-        <AsyncLogger name="org.jasig.cas.web.flow" level="deug" additivity="true" includeLocation="true">
-            <!--<AppenderRef ref="file"/>-->
+        <AsyncLogger name="org.jasig.cas.web.flow" level="debug" additivity="true" includeLocation="true">
+            <AppenderRef ref="file"/>
         </AsyncLogger>
         <AsyncLogger name="org.jasig.inspektr.audit.support" level="info" includeLocation="true">
             <AppenderRef ref="auditlogfile"/>
-            <!--<AppenderRef ref="file"/>-->
+            <AppenderRef ref="file"/>
         </AsyncLogger>
         <AsyncRoot level="debug">
             <AppenderRef ref="console"/>
