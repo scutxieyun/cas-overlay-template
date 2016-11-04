@@ -54,7 +54,7 @@
             <AppenderRef ref="auditlogfile"/>
             <AppenderRef ref="file"/>
         </AsyncLogger>
-        <AsyncRoot level="debug">
+        <AsyncRoot level="warn">
             <AppenderRef ref="console"/>
         </AsyncRoot>
     </Loggers>

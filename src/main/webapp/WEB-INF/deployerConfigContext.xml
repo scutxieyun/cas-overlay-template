@@ -36,7 +36,7 @@
 	<bean id="secondaryAuthenticationHandler" class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
 		<property name="users">
 			<util:map>
-				<entry key="xie" value="561000"/>
+				<entry key="xie" value="123456"/>
 			</util:map>
 		</property>
 	</bean>
@@ -45,26 +45,25 @@
 		<property name="attributeRepository" ref="attributeRepository"/>
 	</bean>
 	
-	<bean id="attributeRepository" class="org.jasig.services.persondir.support.jdbc.MultiRowJdbcPersonAttributeDao">
+    <!--https://wiki.jasig.org/display/PDM15/JDBC+Attribute+Source-->
+	<bean id="attributeRepository" class="org.jasig.services.persondir.support.jdbc.SingleRowJdbcPersonAttributeDao">
 		<constructor-arg index="0" ref="searchModeSearchDatabaseDataSource"/>
-		<constructor-arg index="1" value="select * from t_user_attrs where {0}"/>
-		<property name="queryAttributeMapping">
-			<map>
-				<entry key="username" value="username" />
-			</map>
-		</property>
-		<property name="nameValueColumnMappings">
-			<map>
-				<entry key="key" value="value" />
-			</map>
-		</property>
-		<property name="resultAttributeMapping">
-		<map>
-			<entry key="username" value="username" />
-			<entry key="dep" value="dep" />
-			<entry key="role" value="role" />
-		</map>
-		</property>
+		<constructor-arg index="1" value="select * from sam_users where {0}"/>
+        <property name="resultAttributeMapping">
+            <map>
+                <entry key="EMPLOYEECODE" value="employeeCode"/>
+                <entry key="CUSTOMERCODE" value="storeCode"/>
+                <entry key="USERTYPE" value="userType"/>
+                <entry key="CUSTOMERTYPE" value="storeType"/>
+            </map>
+        </property>
+        <property name="queryAttributeMapping">
+            <map>
+                <entry key="username" value="usercode"/>
+            </map>
+        </property>
+        
+        
 	</bean>	
 	<alias name="serviceThemeResolver" alias="themeResolver" />
 

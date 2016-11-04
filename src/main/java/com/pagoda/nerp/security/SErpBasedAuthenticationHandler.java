@@ -14,7 +14,9 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
-
+/**
+   访问SERP数据库 sam_users进行认证
+*/
 
 @Component("serpBaseAuthenticationHandler")
 public class SErpBasedAuthenticationHandler extends AbstractJdbcUsernamePasswordAuthenticationHandler implements InitializingBean{
